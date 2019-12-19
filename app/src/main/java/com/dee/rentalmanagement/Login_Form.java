@@ -59,7 +59,7 @@ firebaseAuth= FirebaseAuth.getInstance();
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                    startActivity(new Intent(getApplicationContext(),DashboardActivity.class));
 
                                 } else {
                                     Toast.makeText(Login_Form.this, "Login Failed or User not found", Toast.LENGTH_SHORT).show();
