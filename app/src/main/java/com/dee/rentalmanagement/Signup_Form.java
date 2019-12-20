@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -23,7 +24,7 @@ public class Signup_Form extends AppCompatActivity {
     RadioGroup rgGender;
     Button btnSignUp;
 
-    private FirebaseAuth  firebaseAuth;
+    private FirebaseAuth firebaseAuth;
 
 
     @Override
@@ -33,7 +34,7 @@ public class Signup_Form extends AppCompatActivity {
         getSupportActionBar().setTitle("Signup Form");
 
         etEmail = findViewById(R.id.etEmail);
-        etPhone =findViewById(R.id.etPhone);
+        etPhone = findViewById(R.id.etPhone);
         etAddress = findViewById(R.id.etAddress);
         etPassword = findViewById(R.id.etPassword);
         etConfirmPassword = findViewById(R.id.etConfirmPassword);
@@ -44,7 +45,7 @@ public class Signup_Form extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                
                 String email = etEmail.getText().toString().trim();
                 String password = etPassword.getText().toString().trim();
                 String phone = etPhone.getText().toString().trim();
@@ -52,34 +53,34 @@ public class Signup_Form extends AppCompatActivity {
                 String confirmPassword = etConfirmPassword.getText().toString().trim();
 
 
-                if (TextUtils.isEmpty(email)){
+                if (TextUtils.isEmpty(email)) {
                     Toast.makeText(Signup_Form.this, "Please enter Email", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if (TextUtils.isEmpty(password)){
+                if (TextUtils.isEmpty(password)) {
                     Toast.makeText(Signup_Form.this, "Please enter Password", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
 
-                if (TextUtils.isEmpty(confirmPassword)){
+                if (TextUtils.isEmpty(confirmPassword)) {
                     Toast.makeText(Signup_Form.this, "Please enter Confirm Password", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
 
-                if (TextUtils.isEmpty(phone)){
+                if (TextUtils.isEmpty(phone)) {
                     Toast.makeText(Signup_Form.this, "Please enter Phone number", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if (TextUtils.isEmpty(address)){
+                if (TextUtils.isEmpty(address)) {
                     Toast.makeText(Signup_Form.this, "Please enter Address", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if (password.length()<6){
+                if (password.length() < 6) {
                     Toast.makeText(Signup_Form.this, "Password too Short ", Toast.LENGTH_SHORT).show();
                 }
 
@@ -102,8 +103,20 @@ public class Signup_Form extends AppCompatActivity {
 
 
             }
+
         });
 
+        private void onClick  () {
+            SharedPreferences sharedPreferences = getSharedPreferences("User", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
 
+            editor.putString("Email", etEmail.getText().toString());
+            editor.putString("Phone", etPhone.getText().toString());
+            editor.putString("Address", etAddress.getText().toString());
+            editor.putString("password", etPassword.getText().toString());
+            editor.commit();
+
+            Toast.makeText(this, "Sucessfully registered", Toast.LENGTH_SHORT).show();
+        }
     }
 }
