@@ -1,29 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-
-<Button
-    android:id="@+id/btnSell"
-    android:text="Sell"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"/>
+    android:layout_height="match_parent"
+    tools:context=".DashboardActivity">
 
-    <Button
-        android:id="@+id/btnBuy"
-        android:text="Buy"
+<FrameLayout
+    android:id="@+id/FrameId"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
+
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/buttonNavigation"
+        app:menu="@menu/button_navigation"
+        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <RelativeLayout
-        android:id="@+id/fragmentContainer"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"/>
 
-
-
-
-
-</LinearLayout>
+</RelativeLayout>

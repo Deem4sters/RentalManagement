@@ -106,17 +106,6 @@ public class Signup_Form extends AppCompatActivity {
 
         });
 
-        private void onClick  () {
-            SharedPreferences sharedPreferences = getSharedPreferences("User", MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
 
-            editor.putString("Email", etEmail.getText().toString());
-            editor.putString("Phone", etPhone.getText().toString());
-            editor.putString("Address", etAddress.getText().toString());
-            editor.putString("password", etPassword.getText().toString());
-            editor.commit();
-
-            Toast.makeText(this, "Sucessfully registered", Toast.LENGTH_SHORT).show();
         }
     }
-}
